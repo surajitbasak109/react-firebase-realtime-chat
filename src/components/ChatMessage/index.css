@@ -1,0 +1,198 @@
+/* Chat message */
+.chats {
+  flex: 1 1 0;
+  order: 2;
+  position: relative;
+  z-index: 1;
+}
+
+.chats .copyable-area {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.chats .copyable-area .scroll-to-bottom {
+  right: 11px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.scroll-to-bottom {
+  position: absolute;
+  bottom: 17px;
+  z-index: 200;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-to-bottom .sa1 {
+  left: -5px;
+  position: absolute;
+  top: -5px;
+}
+
+.scroll-to-bottom .sb1 {
+  color: #989898;
+}
+
+.copyable-area .da1 {
+  border-left: 1px solid rgba(0, 0, 0, 0.03);
+  left: 0;
+  background-color: initial;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+  position: absolute;
+  overflow-y: scroll;
+  top: 0;
+  transition: background 0.3s ease-out 0.1s;
+  width: 100%;
+  z-index: 100;
+}
+
+.chats .da2 {
+  flex: 1 1 auto;
+  min-height: 12px;
+}
+
+.chats .db2 {
+  padding: 0 0 24px;
+  display: flex;
+  flex: none;
+  justify-content: center;
+}
+
+.chats .dc3 {
+  transition: padding-left 0.3s cubic-bezier(0.69, 0, 0.79, 0.14);
+  padding-left: 0;
+  padding-bottom: 8px;
+  flex: 0 0 auto;
+}
+
+.chat-message {
+  padding-left: 9%;
+  padding-right: 9%;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.message-container {
+  color: #303030;
+  flex: none;
+  font-size: 14.2px;
+  line-height: 19px;
+  position: relative;
+}
+
+@media screen and (min-width: 1301px) {
+  .chat-message .message-container {
+    max-width: 65%;
+  }
+}
+
+.chat-message .message-container {
+  border-radius: 7.5px;
+}
+
+.message-container:last-of-type {
+  margin-bottom: 0;
+}
+
+.message-container .tail-icon {
+  display: block;
+  height: 13px;
+  position: absolute;
+  top: 0;
+  width: 8px;
+  z-index: 100;
+}
+
+.message-in {
+  align-items: flex-start;
+}
+
+.message-out {
+  align-items: flex-end;
+}
+
+.message-in .tail-icon {
+  left: -8px;
+  color: #fff;
+}
+
+.message-out .tail-icon {
+  right: -8px;
+  color: #dcf8c6;
+}
+
+.chat-container {
+  padding: 6px 7px 8px 9px;
+}
+
+.copyable-text .dab1 {
+  position: relative;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.selectable-text.invisible-space:after,
+.selectable-text.invisible-space:before {
+  content: '';
+  display: inline-block;
+  width: 0;
+}
+
+.message-text {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  visibility: visible;
+}
+
+.message-time {
+  float: right;
+  margin: -10px 0 -5px 4px;
+  position: relative;
+  z-index: 10;
+}
+
+.message-time .db1 {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 11px;
+  height: 15px;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.message-in .chat-wrap,
+.message-out .chat-wrap {
+  border-top-left-radius: 0;
+  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+  border-radius: 7.5px;
+  position: relative;
+  z-index: 200;
+}
+
+.message-in .chat-wrap {
+  background-color: #fff;
+}
+
+.message-out .chat-wrap {
+  background: #dcf8c6;
+}
+
+.chat-container .extra-space {
+  width: 110px;
+  display: inline-block;
+  vertical-align: middle;
+}

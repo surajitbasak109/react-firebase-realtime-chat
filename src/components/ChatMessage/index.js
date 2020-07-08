@@ -1,29 +1,33 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import Moment from 'react-moment';
+import './index.css';
 // Icons
 import { FaAngleDown } from 'react-icons/fa';
 import { TailIn, TailOut } from '../../components/Tail';
 
 const ChatMessage = ({ chats, user }) => {
+  const [showScrollButton, setShowScrollButton] = useState(false);
   return (
     <Fragment>
       <div className="chats">
         <div className="copyable-area">
           <span></span>
           <span>
-            <div
-              className="scroll-to-bottom"
-              role="button"
-              style={{
-                transform: 'scaleX(1) scaleX(1)',
-                opacity: 1,
-              }}
-            >
-              <span className="sa1"></span>
-              <span className="sb1">
-                <FaAngleDown />
-              </span>
-            </div>
+            {showScrollButton ? (
+              <div
+                className="scroll-to-bottom"
+                role="button"
+                style={{
+                  transform: 'scaleX(1) scaleX(1)',
+                  opacity: 1,
+                }}
+              >
+                <span className="sa1"></span>
+                <span className="sb1">
+                  <FaAngleDown />
+                </span>
+              </div>
+            ) : null}
           </span>
           <div className="da1" tabIndex="0">
             <div className="da2"></div>

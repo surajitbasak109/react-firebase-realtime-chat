@@ -88,6 +88,27 @@ export default class Chat extends Component {
 
         {/* Chat Messages */}
         <ChatMessage chats={this.state.chats} user={user} />
+        <div className="dax1c" style={{ height: '0px' }}></div>
+        {/* message form */}
+        <footer className="chat-form">
+          <div className="chat-form-wrap">
+            <form onSubmit={this.handleSubmit}>
+              <div className="input-wrap">
+                <input
+                  onChange={this.handleChange}
+                  value={this.state.content}
+                  type="text"
+                  autoComplete="off"
+                  placeholder="Enter your message"
+                  className="chat-input"
+                />
+
+                {this.state.writeError ? this.state.writeError : null}
+              </div>
+            </form>
+          </div>
+          <div className="extra-space"></div>
+        </footer>
       </div>
     );
   }
