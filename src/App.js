@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { auth } from './services/firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 

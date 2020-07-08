@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './chat.css';
 import { auth, db } from '../services/firebase';
-import Moment from 'react-moment';
+
+// components
+import UserInfo from '../components/UserInfo';
+import ChatMessage from '../components/ChatMessage';
 
 export default class Chat extends Component {
   constructor(props) {
@@ -13,10 +16,12 @@ export default class Chat extends Component {
       content: '',
       readError: '',
       writeError: '',
+      showMenu: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
   }
 
   async componentDidMount() {
@@ -59,65 +64,30 @@ export default class Chat extends Component {
     }
   }
 
+  toggleMenu(event) {
+    this.setState({ showMenu: !this.state.showMenu });
+  }
+
   render() {
-    const { user } = this.state;
+    const { user, showMenu } = this.state;
+    console.log(user);
     return (
-      <div className="chat-window py-4">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-12">
-              <div className="user-info">
-                <div>
-                  Logged in as: <strong>{this.state.user.email}</strong>
-                </div>
-              </div>
-              <div className="chats">
-                {this.state.chats.map((chat) => {
-                  return (
-                    <div
-                      className={`chat-message ${
-                        chat.uid === user.uid ? 'message-out' : 'message-in'
-                      }`}
-                      key={chat.timestamp}
-                    >
-                      <div className="chat-wrap">
-                        <div className="chat-container">
-                          <span className="message-text">{chat.content}</span>
-                          <span className="message-time">
-                            <Moment fromNow>{chat.timestamp}</Moment>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+      <div
+        className="chat-window"
+        style={{
+          transform: 'scaleX(1)',
+        }}
+      >
+        <div className="chat-background"></div>
+        {/* Current User information */}
+        <UserInfo
+          user={user}
+          showMenu={showMenu}
+          toggleMenu={this.toggleMenu}
+        />
 
-          <div className="col-12">
-            {/* message form */}
-            <div className="chat-form">
-              <form onSubmit={this.handleSubmit}>
-                <div className="d-flex justify-content-center align-items-center">
-                  <input
-                    onChange={this.handleChange}
-                    value={this.state.content}
-                    type="text"
-                    autoComplete="off"
-                    placeholder="Enter your message"
-                    className="form-control input-flat"
-                  />
-                  {this.state.writeError ? this.state.writeError : null}
-
-                  <button type="submit" className="btn btn-info btn-flat">
-                    Send
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+        {/* Chat Messages */}
+        <ChatMessage chats={this.state.chats} user={user} />
       </div>
     );
   }
