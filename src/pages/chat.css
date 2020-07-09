@@ -96,7 +96,6 @@ html .input-wrap {
   min-height: 20px;
   min-width: 0;
   outline: none;
-  width: inherit;
   will-change: width;
 }
 
@@ -131,4 +130,22 @@ html .input-wrap .chat-input {
   word-break: break-word;
   outline: none;
   border: none;
+}
+
+.error-container .error {
+  margin-bottom: 0;
+}
+
+.error-container {
+  min-height: 30px;
+  order: 3;
+  position: relative;
+  flex: none;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+  display: flex;
+  background: lightyellow;
+  justify-content: center;
+  align-items: center;
 }

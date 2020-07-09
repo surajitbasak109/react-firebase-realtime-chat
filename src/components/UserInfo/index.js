@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import { auth } from '../../services/firebase';
+import defaultAvatarUrl from '../../assets/avatar.png';
 import './index.css';
 // Icons
 import { MdMoreVert } from 'react-icons/md';
 
 const UserInfo = ({ user, showMenu, toggleMenu }) => {
   let displayName = user.displayName ? user.displayName : user.email;
-  let avatarUrl = user.photoURL ? user.photoURL : '../../assets/avatar.png';
+  let avatarUrl = user.photoURL ? user.photoURL : defaultAvatarUrl;
 
   const logout = async (event) => {
     event.preventDefault();

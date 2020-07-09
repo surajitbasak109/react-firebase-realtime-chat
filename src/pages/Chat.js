@@ -70,7 +70,7 @@ export default class Chat extends Component {
 
   render() {
     const { user, showMenu } = this.state;
-    console.log(user);
+    // console.log(user);
     return (
       <div
         className="chat-window"
@@ -89,6 +89,10 @@ export default class Chat extends Component {
         {/* Chat Messages */}
         <ChatMessage chats={this.state.chats} user={user} />
         <div className="dax1c" style={{ height: '0px' }}></div>
+        {this.state.writeError ? (
+          <div className="error-container">{this.state.writeError}</div>
+        ) : null}
+
         {/* message form */}
         <footer className="chat-form">
           <div className="chat-form-wrap">
@@ -102,8 +106,6 @@ export default class Chat extends Component {
                   placeholder="Enter your message"
                   className="chat-input"
                 />
-
-                {this.state.writeError ? this.state.writeError : null}
               </div>
             </form>
           </div>
